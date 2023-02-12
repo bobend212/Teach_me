@@ -1,6 +1,6 @@
 package com.matkon.teachme.domain.deck.dto;
 
-import com.matkon.teachme.domain.card.dto.CardDTO;
+import com.matkon.teachme.domain.card.dto.CardResponse;
 import lombok.*;
 
 import java.util.List;
@@ -14,5 +14,5 @@ public class DeckResponse {
 
     private Long id;
     private String deckName;
-    private List<CardDTO> cards;
+    private List<CardResponse> cards;
 }

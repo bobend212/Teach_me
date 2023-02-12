@@ -7,8 +7,8 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CardDTO {
-    private Long id;
+public class CardRequest {
     private String front;
     private String back;
+    private Long deckId;
 }
