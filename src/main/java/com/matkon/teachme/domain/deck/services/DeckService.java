@@ -23,6 +23,10 @@ public class DeckService {
         return deckRepository.findAll().stream().map(deckMapper::deckToDeckResponse).toList();
     }
 
+    public DeckResponse getSingleDeck(Long deckId) {
+        return deckRepository.findById(deckId).map(deckMapper::deckToDeckResponse).orElseThrow();
+    }
+
     public DeckResponse createDeck(DeckRequest request) {
         return deckMapper.deckToDeckResponse(
                 deckRepository.save(

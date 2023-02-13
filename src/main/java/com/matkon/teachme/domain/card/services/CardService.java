@@ -29,6 +29,10 @@ public class CardService {
         return cardRepository.findAll().stream().map(cardMapper::cardToCardResponse).toList();
     }
 
+    public CardResponse getSingleCard(Long cardId) {
+        return cardRepository.findById(cardId).map(cardMapper::cardToCardResponse).orElseThrow();
+    }
+
     @Transactional
     public CardResponse createCard(CardRequest request) {
 

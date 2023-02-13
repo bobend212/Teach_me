@@ -25,6 +25,11 @@ public class CardController {
         return new ResponseEntity<>(cardService.getAllCards(), HttpStatus.OK);
     }
 
+    @GetMapping("/{cardId}")
+    public ResponseEntity<CardResponse> getSingleCard(@PathVariable Long cardId) {
+        return new ResponseEntity<>(cardService.getSingleCard(cardId), HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<CardResponse> createCard(@RequestBody CardRequest request) {
         return new ResponseEntity<>(cardService.createCard(request), HttpStatus.CREATED);

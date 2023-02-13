@@ -2,7 +2,6 @@ package com.matkon.teachme.domain.deck.controllers;
 
 import com.matkon.teachme.domain.deck.dto.DeckRequest;
 import com.matkon.teachme.domain.deck.dto.DeckResponse;
-import com.matkon.teachme.domain.deck.entity.Deck;
 import com.matkon.teachme.domain.deck.services.DeckService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +22,11 @@ public class DeckController {
     @GetMapping
     public ResponseEntity<List<DeckResponse>> getAllDecks() {
         return new ResponseEntity<>(deckService.getAllDecks(), HttpStatus.OK);
+    }
+
+    @GetMapping("/{deckId}")
+    public ResponseEntity<DeckResponse> getSingleDeck(@PathVariable Long deckId) {
+        return new ResponseEntity<>(deckService.getSingleDeck(deckId), HttpStatus.OK);
     }
 
     @PostMapping
