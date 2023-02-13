@@ -3,6 +3,7 @@ package com.matkon.teachme.domain.card.services;
 import com.matkon.teachme.domain.card.dto.CardRequest;
 import com.matkon.teachme.domain.card.dto.CardResponse;
 import com.matkon.teachme.domain.card.entity.Card;
+import com.matkon.teachme.domain.card.entity.CardStatus;
 import com.matkon.teachme.domain.card.mapper.CardMapper;
 import com.matkon.teachme.domain.card.repository.CardRepository;
 import com.matkon.teachme.domain.deck.repository.DeckRepository;
@@ -47,6 +48,7 @@ public class CardService {
                                 .front(request.getFront())
                                 .back(request.getBack())
                                 .deckId(request.getDeckId())
+                                .status(CardStatus.NEW)
                                 .build()));
 
         assignCardToDeck(request, card);

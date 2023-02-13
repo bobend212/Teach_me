@@ -4,6 +4,7 @@ import com.matkon.teachme.domain.deck.dto.DeckRequest;
 import com.matkon.teachme.domain.deck.dto.DeckResponse;
 import com.matkon.teachme.domain.deck.entity.Deck;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface DeckMapper {

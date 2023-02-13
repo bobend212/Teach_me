@@ -1,30 +1,30 @@
-package com.matkon.teachme.domain.card.entity;
+package com.matkon.teachme.domain.learn.entity;
+
+import java.time.LocalDateTime;
 
 import com.matkon.teachme.domain.deck.entity.Deck;
+
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "cards")
+@Table(name = "log_books")
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Card {
+public class LogBook {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String front;
-
-    private String back;
-
-    @Enumerated(EnumType.STRING)
-    private CardStatus status;
-
     @ManyToOne
     @JoinColumn(name = "deck_id")
     private Deck deck;
+
+    private LocalDateTime approachDate;
+
+    private int totalScore;
 }

@@ -1,6 +1,8 @@
 package com.matkon.teachme.domain.deck.entity;
 
 import com.matkon.teachme.domain.card.entity.Card;
+import com.matkon.teachme.domain.learn.entity.LogBook;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,4 +25,7 @@ public class Deck {
 
     @OneToMany(mappedBy = "deck")
     private List<Card> cards;
+
+    @OneToMany(mappedBy = "deck")
+    private List<LogBook> logBooks;
 }
