@@ -45,4 +45,9 @@ public class CardController {
     public ResponseEntity<CardResponse> partialUpdate(@PathVariable Long cardId, @RequestBody CardRequest request) {
         return new ResponseEntity<>(cardService.partialUpdate(cardId, request), HttpStatus.OK);
     }
+
+    @GetMapping("/shuffle/{deckId}")
+    public ResponseEntity<CardResponse> shuffleCardByDeck(@PathVariable Long deckId) {
+        return new ResponseEntity<>(cardService.shuffleCardByDeck(deckId), HttpStatus.ACCEPTED);
+    }
 }

@@ -12,6 +12,7 @@ import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.stereotype.Service;
 
@@ -80,5 +81,15 @@ public class CardService {
         });
 
         return cardMapper.cardToCardResponse(cardRepository.save(findCard));
+    }
+
+    public CardResponse shuffleCardByDeck(Long deckId) {
+        // to improve
+        var findCards = getAllCards().stream().filter(xxx -> xxx.getDeck().getId() == deckId)
+                .mapToLong(qqq -> qqq.getId()).toArray();
+
+        int rnd = new Random().nextInt(findCards.length);
+
+        return getSingleCard(Long.valueOf(rnd + 1));
     }
 }
