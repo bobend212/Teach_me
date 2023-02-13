@@ -7,6 +7,9 @@ import com.matkon.teachme.domain.card.mapper.CardMapper;
 import com.matkon.teachme.domain.card.repository.CardRepository;
 import com.matkon.teachme.domain.deck.repository.DeckRepository;
 import jakarta.transaction.Transactional;
+
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,17 +25,20 @@ public class CardService {
         this.cardMapper = cardMapper;
     }
 
+    public List<CardResponse> getAllCards() {
+        return cardRepository.findAll().stream().map(cardMapper::cardToCardResponse).toList();
+    }
+
     @Transactional
     public CardResponse createCard(CardRequest request) {
 
-        Card card =
-                cardRepository.save(
-                        cardMapper.cardRequestToCard(
-                                CardRequest.builder()
-                                        .front(request.getFront())
-                                        .back(request.getBack())
-                                        .deckId(request.getDeckId())
-                                        .build()));
+        Card card = cardRepository.save(
+                cardMapper.cardRequestToCard(
+                        CardRequest.builder()
+                                .front(request.getFront())
+                                .back(request.getBack())
+                                .deckId(request.getDeckId())
+                                .build()));
 
         assignCardToDeck(request, card);
 

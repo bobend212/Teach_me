@@ -3,6 +3,9 @@ package com.matkon.teachme.domain.card.controllers;
 import com.matkon.teachme.domain.card.dto.CardRequest;
 import com.matkon.teachme.domain.card.dto.CardResponse;
 import com.matkon.teachme.domain.card.services.CardService;
+
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +18,11 @@ public class CardController {
 
     public CardController(CardService cardService) {
         this.cardService = cardService;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CardResponse>> getAllCards() {
+        return new ResponseEntity<>(cardService.getAllCards(), HttpStatus.OK);
     }
 
     @PostMapping

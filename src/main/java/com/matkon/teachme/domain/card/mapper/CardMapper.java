@@ -11,4 +11,5 @@ public interface CardMapper {
     Card cardRequestToCard(CardRequest request);
 
     CardResponse cardToCardResponse(Card card);
+
 }

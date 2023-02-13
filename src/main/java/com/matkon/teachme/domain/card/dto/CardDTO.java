@@ -1,7 +1,5 @@
 package com.matkon.teachme.domain.card.dto;
 
-import com.matkon.teachme.domain.deck.dto.DeckDTO;
-
 import lombok.*;
 
 @Getter
@@ -9,9 +7,8 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CardResponse {
+public class CardDTO {
     private Long id;
     private String front;
     private String back;
-    private DeckDTO deck;
 }
