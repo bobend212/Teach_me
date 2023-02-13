@@ -4,6 +4,8 @@ import com.matkon.teachme.domain.deck.dto.DeckRequest;
 import com.matkon.teachme.domain.deck.dto.DeckResponse;
 import com.matkon.teachme.domain.deck.mapper.DeckMapper;
 import com.matkon.teachme.domain.deck.repository.DeckRepository;
+import com.matkon.teachme.exceptions.NotFoundException;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,7 +26,8 @@ public class DeckService {
     }
 
     public DeckResponse getSingleDeck(Long deckId) {
-        return deckRepository.findById(deckId).map(deckMapper::deckToDeckResponse).orElseThrow();
+        return deckRepository.findById(deckId).map(deckMapper::deckToDeckResponse)
+                .orElseThrow(() -> new NotFoundException(String.format("Deck ID: %s, not found.", deckId)));
     }
 
     public DeckResponse createDeck(DeckRequest request) {

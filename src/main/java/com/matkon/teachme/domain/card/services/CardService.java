@@ -6,6 +6,8 @@ import com.matkon.teachme.domain.card.entity.Card;
 import com.matkon.teachme.domain.card.mapper.CardMapper;
 import com.matkon.teachme.domain.card.repository.CardRepository;
 import com.matkon.teachme.domain.deck.repository.DeckRepository;
+import com.matkon.teachme.exceptions.NotFoundException;
+
 import jakarta.transaction.Transactional;
 
 import java.util.List;
@@ -30,7 +32,8 @@ public class CardService {
     }
 
     public CardResponse getSingleCard(Long cardId) {
-        return cardRepository.findById(cardId).map(cardMapper::cardToCardResponse).orElseThrow();
+        return cardRepository.findById(cardId).map(cardMapper::cardToCardResponse)
+                .orElseThrow(() -> new NotFoundException(String.format("Card ID: %s, not found.", cardId)));
     }
 
     @Transactional
@@ -53,10 +56,11 @@ public class CardService {
         deckRepository.findById(request.getDeckId()).map(deck -> {
             card.setDeck(deck);
             return deckRepository.save(deck);
-        }).orElseThrow();
+        }).orElseThrow(() -> new NotFoundException(String.format("Card ID: %s, not found.", card.getId())));
     }
 
     public void deleteCard(Long cardId) {
+        getSingleCard(cardId);
         cardRepository.deleteById(cardId);
     }
 }
