@@ -40,4 +40,9 @@ public class CardController {
         cardService.deleteCard(cardId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PatchMapping("/{cardId}")
+    public ResponseEntity<CardResponse> partialUpdate(@PathVariable Long cardId, @RequestBody CardRequest request) {
+        return new ResponseEntity<>(cardService.partialUpdate(cardId, request), HttpStatus.OK);
+    }
 }

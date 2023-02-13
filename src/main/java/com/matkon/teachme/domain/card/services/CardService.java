@@ -11,6 +11,7 @@ import com.matkon.teachme.exceptions.NotFoundException;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -62,5 +63,22 @@ public class CardService {
     public void deleteCard(Long cardId) {
         getSingleCard(cardId);
         cardRepository.deleteById(cardId);
+    }
+
+    @Transactional
+    public CardResponse partialUpdate(Long cardId, CardRequest request) {
+        var findCard = cardRepository.findById(cardId)
+                .orElseThrow(() -> new NotFoundException(String.format("Card ID: %s, not found.", cardId)));
+
+        Optional.ofNullable(request.getFront()).ifPresent(findCard::setFront);
+        Optional.ofNullable(request.getBack()).ifPresent(findCard::setBack);
+        Optional.ofNullable(request.getDeckId()).ifPresent(deckId -> {
+            deckRepository.findById(deckId).map(deck -> {
+                findCard.setDeck(deck);
+                return deckRepository.save(deck);
+            }).orElseThrow(() -> new NotFoundException(String.format("Deck ID: %s, not found.", deckId)));
+        });
+
+        return cardMapper.cardToCardResponse(cardRepository.save(findCard));
     }
 }

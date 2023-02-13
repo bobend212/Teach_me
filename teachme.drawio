@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Strona-1" id="C09MxdmME8eIG6dmTotm">
-        <mxGraphModel dx="1317" dy="626" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1317" dy="570" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -79,10 +79,10 @@
                 <mxCell id="RwmrF1Tj0tmwLUVZTNdM-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="RwmrF1Tj0tmwLUVZTNdM-25" target="RwmrF1Tj0tmwLUVZTNdM-14" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="2" value="- get all Decks&lt;br&gt;- create Deck&lt;br&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="2" value="- get all Decks&lt;br&gt;- create Deck&lt;br&gt;- get single deck" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="317" y="655" width="130" height="109" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" value="- create card&lt;br&gt;- delete card&lt;br&gt;- get all cards" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="3" value="- create card&lt;br&gt;- delete card&lt;br&gt;- get all cards&lt;br&gt;- get single card&lt;br&gt;- card partially update" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="555" y="659" width="130" height="109" as="geometry"/>
                 </mxCell>
             </root>
