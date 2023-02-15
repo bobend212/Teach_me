@@ -2,6 +2,8 @@ package com.matkon.teachme.domain.learn.entity;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import com.matkon.teachme.domain.deck.entity.Deck;
 
 import jakarta.persistence.*;
@@ -24,6 +26,7 @@ public class LogBook {
     @JoinColumn(name = "deck_id")
     private Deck deck;
 
+    @CreationTimestamp
     private LocalDateTime approachDate;
 
     private int totalScore;
