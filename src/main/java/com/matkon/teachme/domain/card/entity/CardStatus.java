@@ -7,9 +7,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum CardStatus {
     NEW("NEW"),
-    AGAIN("AGAIN"),
-    GOOD("GOOD"),
-    EASY("EASY");
+    POORLY("POORLY"),
+    OK("OK"),
+    GREAT("GREAT");
 
     private final String value;
 }

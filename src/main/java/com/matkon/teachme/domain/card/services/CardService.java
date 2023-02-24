@@ -75,6 +75,7 @@ public class CardService {
 
         Optional.ofNullable(request.getFront()).ifPresent(findCard::setFront);
         Optional.ofNullable(request.getBack()).ifPresent(findCard::setBack);
+        Optional.ofNullable(request.getStatus()).ifPresent(findCard::setStatus);
         Optional.ofNullable(request.getDeckId()).ifPresent(deckId -> {
             deckRepository.findById(deckId).map(deck -> {
                 findCard.setDeck(deck);
@@ -86,12 +87,12 @@ public class CardService {
     }
 
     public CardResponse shuffleCardByDeck(Long deckId) {
-        // to improve
-        var findCards = getAllCards().stream().filter(xxx -> xxx.getDeck().getId() == deckId)
-                .mapToLong(qqq -> qqq.getId()).toArray();
+        var cardIds = getAllCards().stream()
+                .filter(deck -> deck.getDeck().getId() == deckId).map(card -> card.getId()).mapToInt(Long::intValue)
+                .boxed().toList();
 
-        int rnd = new Random().nextInt(findCards.length);
+        var cardId = cardIds.get(new Random().nextInt(cardIds.size()));
 
-        return getSingleCard(Long.valueOf(rnd + 1));
+        return getSingleCard(Long.valueOf(cardId));
     }
 }
